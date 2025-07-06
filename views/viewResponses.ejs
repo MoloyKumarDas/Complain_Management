@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Responses</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="responses">
+    <h2>Your Complaints and Responses</h2>
+    <% complaints.forEach(c => { %>
+      <div class="complaint-box">
+        <p><strong>Complaint to:</strong> <%= c.receiverRole %></p>
+        <p><strong>Sent:</strong> <%= new Date(c.date).toLocaleString() %></p>
+        <p><strong>Message:</strong> <%= c.message %></p>
+
+        <% if (c.response) { %>
+          <p><strong>Response:</strong> <%= c.response.message %></p>
+          <p><strong>Responded:</strong> <%= new Date(c.response.date).toLocaleString() %></p>
+        <% } else { %>
+          <p><em>No response yet.</em></p>
+        <% } %>
+      </div>
+    <% }) %>
+    <br>
+    <a href="/dashboard">Back to Dashboard</a>
+  </div>
+</body>
+</html>

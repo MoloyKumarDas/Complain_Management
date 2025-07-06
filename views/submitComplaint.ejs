@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Submit Complaint</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Submit Complaint</h2>
+    <form action="/complaints/new" method="POST">
+      <label>Choose Admin to Complain To:</label>
+      <select name="receiverRole" required>
+        <option value="DSW">DSW</option>
+        <option value="Faculty">Faculty</option>
+        <option value="Dept">Dept</option>
+      </select><br>
+      <textarea name="message" placeholder="Write your complaint here..." required></textarea><br>
+      <button type="submit">Submit</button>
+    </form>
+    <br>
+    <a href="/dashboard">Back to Dashboard</a>
+  </div>
+</body>
+</html>

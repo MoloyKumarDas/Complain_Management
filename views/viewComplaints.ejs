@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin - View Complaints</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="complaints">
+    <h2>Complaints for <%= user.role %></h2>
+    <% complaints.forEach(c => { %>
+      <div class="complaint-box">
+        <p><strong>From:</strong> <%= c.senderEmail %></p>
+        <p><strong>Date:</strong> <%= new Date(c.date).toLocaleString() %></p>
+        <p><strong>Message:</strong> <%= c.message %></p>
+
+        <% if (!c.response) { %>
+          <form action="/complaints/respond/<%= c._id %>" method="POST">
+            <textarea name="message" placeholder="Write your response..." required></textarea><br>
+            <button type="submit">Respond</button>
+          </form>
+        <% } else { %>
+          <p><strong>Response:</strong> <%= c.response.message %> (on <%= new Date(c.response.date).toLocaleString() %>)</p>
+        <% } %>
+      </div>
+    <% }) %>
+    <br>
+    <a href="/dashboard">Back to Dashboard</a>
+  </div>
+</body>
+</html>
