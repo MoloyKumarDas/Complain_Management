@@ -1,3 +1,4 @@
+<!-- 
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,25 +8,63 @@
 <body>
   <div class="complaints">
     <h2>Complaints for <%= user.role %></h2>
+
     <% complaints.forEach(c => { %>
-      <div class="complaint-box">
+      <div class="complaint-box" style="border:1px solid #ccc; padding:15px; margin-bottom:10px;">
         <p><strong>From:</strong> <%= c.senderEmail %></p>
         <p><strong>Date:</strong> <%= new Date(c.date).toLocaleString() %></p>
         <p><strong>Message:</strong> <%= c.message %></p>
 
-        <% if (!c.response) { %>
+        <% if (!c.response || !c.response.message) { %>
           <form action="/complaints/respond/<%= c._id %>" method="POST">
-            <textarea name="message" placeholder="Write your response..." required></textarea><br>
+            <textarea name="message" required></textarea><br>
             <button type="submit">Respond</button>
           </form>
         <% } else { %>
-          <p><strong>Response:</strong> <%= c.response.message %> (on <%= new Date(c.response.date).toLocaleString() %>)</p>
+          <p><strong>Response:</strong> <%= c.response.message %></p>
+          <p><strong>Responded on:</strong> <%= new Date(c.response.date).toLocaleString() %></p>
+        <% } %>
+        
+      </div>
+    <% }) %>
+
+    <br><br>
+    <a href="/dashboard">← Back to Dashboard</a>
+  </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin - View Complaints</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="complaints">
+    <h2>Complaints for <%= user.role %></h2>
+
+    <% complaints.forEach(c => { %>
+      <div class="complaint-box" style="border:1px solid #ccc; padding:15px; margin-bottom:10px;">
+        <p><strong>From:</strong> <%= c.senderEmail %></p>
+        <p><strong>Date:</strong> <%= new Date(c.date).toLocaleString() %></p>
+        <p><strong>Message:</strong> <%= c.message %></p>
+
+        <% if (!c.response || !c.response.message) { %>
+          <form action="/complaints/respond/<%= c._id %>" method="POST">
+            <textarea name="message" placeholder="Write your response..." required style="width:100%; height:80px;"></textarea><br><br>
+            <button type="submit">Respond</button>
+          </form>
+        <% } else { %>
+          <p><strong>Response:</strong> <%= c.response.message %></p>
+          <p><strong>Responded on:</strong> <%= new Date(c.response.date).toLocaleString() %></p>
         <% } %>
       </div>
     <% }) %>
-    <br>
-    <a href="/dashboard">Back to Dashboard</a>
+
+    <br><br>
+    <a href="/dashboard">← Back to Dashboard</a>
   </div>
 </body>
 </html>
-<!-- dhdh -->

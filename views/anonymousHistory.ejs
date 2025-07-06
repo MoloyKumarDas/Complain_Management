@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Previous Complaints</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="history">
+    <h2>Your Previous Complaints</h2>
+
+    <% if (complaints.length === 0) { %>
+      <p>No complaints submitted yet.</p>
+    <% } else { %>
+      <% complaints.forEach(c => { %>
+        <div class="complaint-box" style="border:1px solid #ccc; padding:15px; margin-bottom:10px;">
+          <p><strong>Complaint to:</strong> <%= c.receiverRole %></p>
+          <p><strong>Date:</strong> <%= new Date(c.date).toLocaleString() %></p>
+          <p><strong>Message:</strong> <%= c.message %></p>
+
+          <% if (c.response && c.response.message) { %>
+            <p><strong>Response:</strong> <%= c.response.message %></p>
+            <p><strong>Responded by:</strong> <%= c.response.responder %> on <%= new Date(c.response.date).toLocaleString() %></p>
+          <% } else { %>
+            <p><em>Awaiting response...</em></p>
+          <% } %>
+        </div>
+      <% }) %>
+    <% } %>
+
+    <br>
+    <a href="/dashboard">← Back to Dashboard</a>
+  </div>
+</body>
+</html>

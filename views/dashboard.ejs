@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title>Dashboard</title>
@@ -16,6 +16,31 @@
     <% } %>
     
     <br><br>
+    <a href="/logout">Logout</a>
+    <a href="/complaints/history">📜 View Previous Complaints and Responses</a><br>
+
+  </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="dashboard">
+    <h2>Welcome <%= user.role %></h2>
+
+    <% if (['Anonymous', 'Series', 'DeptUser'].includes(user.role)) { %>
+      <a href="/complaints/new">Submit Complaint</a><br>
+      <a href="/complaints/list">View Responses</a><br>
+      <a href="/complaints/history">📜 View Previous Complaints and Responses</a><br>
+    <% } else { %>
+      <a href="/complaints/admin">View Complaints</a><br>
+    <% } %>
+    
+    <br>
     <a href="/logout">Logout</a>
   </div>
 </body>

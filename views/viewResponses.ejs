@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title>My Responses</title>
@@ -22,7 +22,54 @@
       </div>
     <% }) %>
     <br>
+    <% complaints.forEach(c => { %>
+      <div class="response-box">
+        <p><strong>You said:</strong> <%= c.message %></p>
+        <p><strong>Sent to:</strong> <%= c.receiverRole %></p>
+        <p><strong>Sent on:</strong> <%= new Date(c.date).toLocaleString() %></p>
+    
+        <% if (c.response) { %>
+          <p><strong>Admin Response:</strong> <%= c.response.message %></p>
+          <p><strong>Responded by:</strong> <%= c.response.responder %> on <%= new Date(c.response.date).toLocaleString() %></p>
+        <% } else { %>
+          <p><em>Awaiting response...</em></p>
+        <% } %>
+      </div>
+    <% }) %>
+<br>    
     <a href="/dashboard">Back to Dashboard</a>
+  </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Responses</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="responses">
+    <h2>Your Complaints and Responses</h2>
+
+    <% complaints.forEach(c => { %>
+      <div class="response-box" style="border:1px solid #ccc; padding:15px; margin-bottom:10px;">
+        <p><strong>You said:</strong> <%= c.message %></p>
+        <p><strong>Sent to:</strong> <%= c.receiverRole %></p>
+        <p><strong>Sent on:</strong> <%= new Date(c.date).toLocaleString() %></p>
+
+        <% if (c.response) { %>
+          <p><strong>Admin Response:</strong> <%= c.response.message %></p>
+          <p><strong>Responded by:</strong> <%= c.response.responder %> on <%= new Date(c.response.date).toLocaleString() %></p>
+        <% } else { %>
+          <p><em>Awaiting response...</em></p>
+        <% } %>
+      </div>
+    <% }) %>
+
+    <br>
+    <a href="/dashboard">← Back to Dashboard</a>
   </div>
 </body>
 </html>
