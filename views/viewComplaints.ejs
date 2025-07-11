@@ -47,7 +47,13 @@
 
     <% complaints.forEach(c => { %>
       <div class="complaint-box" style="border:1px solid #ccc; padding:15px; margin-bottom:10px;">
-        <p><strong>From:</strong> <%= c.senderEmail %></p>
+        <!-- <p><strong>From:</strong> <%= c.senderEmail %></p> -->
+        <!-- <p><strong>From:</strong> <%= c.senderEmail.includes('anonymous') ? 'Anonymous' : c.senderEmail %></p> -->
+        <!-- <p><strong>From:</strong> 
+          <%= c.senderEmail && !c.senderEmail.includes('@') ? 'Anonymous' : c.senderEmail %>
+        </p> -->
+        <p><strong>From:</strong> <%= c.senderEmail?.includes('@') ? c.senderEmail : 'Anonymous' %></p>
+
         <p><strong>Date:</strong> <%= new Date(c.date).toLocaleString() %></p>
         <p><strong>Message:</strong> <%= c.message %></p>
 
