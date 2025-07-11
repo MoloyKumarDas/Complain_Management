@@ -6,51 +6,6 @@
 </head>
 <body>
   <div class="responses">
-    <h2>Your Complaints and Responses</h2>
-    <% complaints.forEach(c => { %>
-      <div class="complaint-box">
-        <p><strong>Complaint to:</strong> <%= c.receiverRole %></p>
-        <p><strong>Sent:</strong> <%= new Date(c.date).toLocaleString() %></p>
-        <p><strong>Message:</strong> <%= c.message %></p>
-
-        <% if (c.response) { %>
-          <p><strong>Response:</strong> <%= c.response.message %></p>
-          <p><strong>Responded:</strong> <%= new Date(c.response.date).toLocaleString() %></p>
-        <% } else { %>
-          <p><em>No response yet.</em></p>
-        <% } %>
-      </div>
-    <% }) %>
-    <br>
-    <% complaints.forEach(c => { %>
-      <div class="response-box">
-        <p><strong>You said:</strong> <%= c.message %></p>
-        <p><strong>Sent to:</strong> <%= c.receiverRole %></p>
-        <p><strong>Sent on:</strong> <%= new Date(c.date).toLocaleString() %></p>
-    
-        <% if (c.response) { %>
-          <p><strong>Admin Response:</strong> <%= c.response.message %></p>
-          <p><strong>Responded by:</strong> <%= c.response.responder %> on <%= new Date(c.response.date).toLocaleString() %></p>
-        <% } else { %>
-          <p><em>Awaiting response...</em></p>
-        <% } %>
-      </div>
-    <% }) %>
-<br>    
-    <a href="/dashboard">Back to Dashboard</a>
-  </div>
-</body>
-</html> -->
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My Responses</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-  <div class="responses">
     <h2>Other Complaints and Responses</h2>
 
     <% complaints.forEach(c => { %>
@@ -70,6 +25,112 @@
 
     <br>
     <a href="/dashboard">← Back to Dashboard</a>
+  </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Complaint Responses</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      /* background-color: #f4f6f8; */
+      background-color: rgb(155, 150, 150);
+
+      display: flex;
+      justify-content: center;
+      padding: 50px 20px;
+    }
+
+    .responses {
+      max-width: 900px;
+      width: 100%;
+      /* background-color: #ffffff; */
+      background-color: rgb(230, 228, 228);
+
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      font-size: 26px;
+      margin-bottom: 30px;
+    }
+
+    .response-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+      background-color: #fdfdfd;
+    }
+
+    .response-card p {
+      font-size: 15px;
+      color: #333;
+      margin: 8px 0;
+    }
+
+    .response-card .label {
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    em {
+      color: #888;
+      font-style: italic;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      /* color: #555; */
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Optional: separator line */
+    .divider {
+      border-top: 1px solid #e0e0e0;
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="responses">
+    <h2><i>Your Submitted Complaints and Admin Responses</i></h2>
+
+    <% if (complaints && complaints.length > 0) { %>
+      <% complaints.forEach(c => { %>
+        <div class="response-card">
+          <p><span class="label">Complaint to:</span> <%= c.receiverRole %></p>
+          <p><span class="label">Submitted on:</span> <%= new Date(c.date).toLocaleString() %></p>
+          <p><span class="label">Your Message:</span> <%= c.message %></p>
+
+          <% if (c.response) { %>
+            <p><span class="label">Admin Response:</span> <%= c.response.message %></p>
+            <p><span class="label">Responded by:</span> <%= c.response.responder %> on <%= new Date(c.response.date).toLocaleString() %></p>
+          <% } else { %>
+            <p><em>Awaiting response from admin.</em></p>
+          <% } %>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p style="text-align: center; color: #777;">No complaints found.</p>
+    <% } %>
+
+    <a href="/dashboard" class="back-link">← Back to Dashboard</a>
   </div>
 </body>
 </html>

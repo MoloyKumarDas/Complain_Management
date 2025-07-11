@@ -6,7 +6,7 @@ body {
   
   .form-container, .dashboard, .complaints, .responses {
     background-color: white;
-    padding: 20px;
+    padding: 50px;
     border-radius: 10px;
     max-width: 600px;
     margin: auto;
@@ -33,10 +33,75 @@ body {
     padding: 10px;
     border-radius: 8px;
   }
-  .form-input {
+  /* .form-input {
     width: 250px;
     padding: 6px;
     border: 1px solid #ccc;
     border-radius: 4px;
+  } */
+  
+   .top-text {
+    position: absolute;
+    top: 20px;
+    text-align: center;
+    width: 100%;
+    /* background-color: grey; */
+    color: rgb(74, 74, 73);
+
+
   }
   
+    
+    .main-heading {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .sub-text {
+      font-size: 18px;
+      font-style: italic;
+      font-weight: 500;
+      /* color: rgb(79, 54, 54); */
+      color: rgb(59, 58, 58);
+    }
+    .bottom-text {
+      position: absolute;
+      margin-top: 600px;
+      text-align: center;
+      font-size: 14px;
+      color:rgb(58, 57, 57);
+    }
+    .main-heading1 {
+      font-size: 22px;
+      /* font-weight: bold; */
+      font-weight: 500;
+
+      margin-bottom: 5px;
+    }
+    
+    .sub-text1 {
+      font-size: 18px;
+      font-style: italic;
+      font-weight: bold;
+      /* color: rgb(79, 54, 54); */
+      color:rgb(58, 57, 57);
+
+    }
+
+    /* .info-text {
+      margin: 6px 0;
+      font-weight: bold;
+      width: 100%;
+
+      font-style: italic;
+      font-size: 28px;
+    }
+    .info-text2 {
+      margin: 6px 0;
+      font-weight: bold;
+
+      font-style: italic;
+      color: rgb(74, 74, 73);
+
+    } */

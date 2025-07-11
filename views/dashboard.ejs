@@ -3,22 +3,79 @@
 <head>
   <title>Dashboard</title>
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f1f3f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .dashboard {
+      background-color: #ffffff;
+      padding: 40px 35px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      max-width: 450px;
+      width: 100%;
+    }
+
+    .dashboard h1 {
+      font-size: 28px;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .dashboard p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .action-button {
+      display: block;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      margin: 12px 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .action-button:hover {
+      background-color: #0056b3;
+    }
+
+    .logout-button {
+      background-color: #dc3545;
+    }
+
+    .logout-button:hover {
+      background-color: #a71d2a;
+    }
+  </style>
 </head>
 <body>
   <div class="dashboard">
-    <h2>Welcome <%= user.role %></h2>
+    <h1>Dashboard</h1>
+    <p>Welcome, <strong><%= user.role %></strong>. Please select an action below.</p>
 
     <% if (['Anonymous', 'Series', 'DeptUser'].includes(user.role)) { %>
-      <a href="/complaints/new">Submit Complaint</a><br>
-      <a href="/complaints/list">View Responses</a>
+      <a href="/complaints/new" class="action-button">Submit New Complaint</a>
+      <a href="/complaints/list" class="action-button">View Responses</a>
+      <a href="/complaints/history" class="action-button">Complaint History</a>
     <% } else { %>
-      <a href="/complaints/admin">View Complaints</a>
+      <a href="/complaints/admin" class="action-button">View Submitted Complaints</a>
     <% } %>
-    
-    <br><br>
-    <a href="/logout">Logout</a>
-    <a href="/complaints/history">📜 View Previous Complaints and Responses</a><br>
 
+    <a href="/logout" class="action-button logout-button">Logout</a>
   </div>
 </body>
 </html> -->
@@ -27,21 +84,88 @@
 <head>
   <title>Dashboard</title>
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      /* background-color: #f1f3f5; */
+      background-color: rgb(155, 150, 150);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .dashboard {
+      /* background-color: #ffffff; */
+      background-color: rgb(230, 228, 228);
+
+      padding: 40px 35px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      max-width: 450px;
+      width: 100%;
+    }
+
+    .dashboard h1 {
+      font-size: 28px;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .dashboard p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .action-button {
+      display: block;
+      background-color: #3f51b5;
+      color: white;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      margin: 12px 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .action-button:hover {
+      /* background-color: #5c6bc0;  */
+      background-color: #1a6287; /* soft slate gray */
+
+    }
+
+    .logout-button {
+      background-color: #7189a3;
+
+      color: #0f1011;
+    }
+
+    .logout-button:hover {
+      background-color: #2d7295;
+      color: #000;
+    }
+  </style>
 </head>
 <body>
   <div class="dashboard">
-    <h2>Welcome <%= user.role %></h2>
+    <h1>Dashboard</h1>
+    <p>Welcome, <strong><%= user.role %></strong>. Please select an action below.</p>
 
     <% if (['Anonymous', 'Series', 'DeptUser'].includes(user.role)) { %>
-      <a href="/complaints/new">Submit Complaint</a><br>
-      <a href="/complaints/list">View Responses</a><br>
-      <a href="/complaints/history">📜 View Previous Complaints and Responses</a><br>
+      <a href="/complaints/new" class="action-button">Submit New Complaint</a>
+      <a href="/complaints/list" class="action-button">View Responses</a>
+      <a href="/complaints/history" class="action-button">Complaint History</a>
     <% } else { %>
-      <a href="/complaints/admin">View Complaints</a><br>
+      <a href="/complaints/admin" class="action-button">View Submitted Complaints</a>
     <% } %>
-    
-    <br>
-    <a href="/logout">Logout</a>
+
+    <a href="/logout" class="action-button logout-button">Logout</a>
   </div>
 </body>
 </html>
